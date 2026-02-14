@@ -1,0 +1,83 @@
+\input{./src/main.sty}
+% Additional SI unit for Fahrenheit
+\DeclareSIUnit\fahrenheit{\degree F}
+\sisetup{range-phrase = --}
+\sisetup{range-units = single}
+
+\begin{document}
+
+% Include title page
+\input{./src/titlepage.tex}
+
+\begin{enumerate}
+    \item Iron corrodes in a solution saturated with oxygen. The pH of the 
+        solution is 5.5 and the partial pressure of Oxygen is 1.
+    
+        \begin{enumerate}[(i)]
+            \item Calculate corrosion current and potential of the system.
+
+            \item A sacrificial zinc-manganese alloy anode is coupled with
+                iron to protect the structure.
+
+                \begin{enumerate}[(a)]
+                    \item Calculate the corrosion current of the protected
+                        structure.
+                    \item Calculate the corrosion current of the protected
+                        structure
+                \end{enumerate}
+
+            \item Is the applied sacrificial protection system atisfactory?
+                Does the system offer overprotection or underprotection?
+
+        Given:
+
+        \begin{align*}
+            b_a &= \SI{0.1}{\volt\per decade}, &
+            b_c &= \SI{-0.1}{\volt\per decade} \\
+            P_{\ch{O2}} &= \SI{1}{atm} & \ch{[Fe^{2+}]} &= \SI{0.29}{M} \\
+            e^o_{\ch{Fe}|\ch{Fe^{2+}}} &= \SI{-0.44}{\volt} \text{ vs. SHE} \\
+            e^o_{\ch{ZnMn}} &= \SI{-1.46}{\volt} \text{ vs. SHE}
+        \end{align*}
+
+        Exchange current density for oxygen reduction
+        $i^o_{\ch{O2}} = \SI{e-6}{\ampere\per\centi\meter\squared}$ \par
+        Exchange current density for iron dissolution
+        $i^o_{\ch{Fe}} = \SI{e-5}{\ampere\per\centi\meter\squared}$ \par
+        Exchange current density for zinc alloy anode
+        $i^o_{\ch{ZnMn}} = \SI{e-5}{\ampere\per\centi\meter\squared}$ \par
+
+        \end{enumerate}
+        
+    \item Iron corrodes in a solution saturated with oxygen. The pH of the 
+        solution plays a significant role in the corrosion of iron and the 
+        applied current needed to protect the iron. To analyze the effect of 
+        pH: 
+
+        \begin{enumerate}[(i)]
+            \item calculate the corrosion current and potential when the 
+                solution has a pH of 14, 10, and 7;
+            \item to bring down the corrosion current to the order of \num{e-5}
+                , calculate the impressed current needed; and 
+            \item Does the impressed current increase/decrease with pH? If so, 
+                why?
+        \end{enumerate}
+
+        Given:
+
+        \begin{align*}
+            b_a &= \SI{0.1}{\volt\per decade}, & 
+            b_c &= \SI{-0.1}{\volt\per decade} \\
+            p_{\ch{O2}} &= \SI{1}{atm}, \ch{[Fe^{2+}]} &= \SI{0.5}{M}
+        \end{align*}
+
+        Exchange current density for oxygen reduction, 
+        $i^o_{\ch{O2}} = \SI{e-7}{\ampere\per\centi\meter\squared}$ \par
+        Exchange current density for iron dissolution, 
+        $i^o_{\ch{Fe^{2+}}} = \SI{e-5}{\ampere\per\centi\meter\squared}$ \par
+
+        \textbf{Solution:}\par
+        Anodic reaction: \ch{Fe -> Fe^{2+} + 2 e^-}, $e^o = \SI{0.44}{\volt}$
+
+\end{enumerate}
+
+\end{document}
