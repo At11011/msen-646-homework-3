@@ -16,25 +16,186 @@
         \begin{enumerate}[(i)]
             \item Calculate corrosion current and potential of the system.
 
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=0.3\textwidth]{./assets/half_cell_potentials.png}
+            \end{figure}
+
+                \boxedanswer{
+
+                    
+                    Assume iron oxidation at the anode and oxygen reduction at 
+                    the cathode.
+
+                    \begin{equation*}
+                        \ch{Fe -> Fe^{2+} + 2 e-}
+                    \end{equation*}
+    
+                    \begin{align*}
+                        E_{\ch{Fe}} &= E^o - \frac{0.059}{n}\log[\ch{Fe^{2+}}] \\
+                                    & \begin{aligned}
+                                            E^o &= \SI{-0.44}{\volt} \\
+                                            n &= \SI{2}{electrons} \\
+                                            [\ch{Fe^{2+}}] &= \SI{0.29}{M} \\
+                                        \end{aligned} \\
+                        E_{\ch{Fe}} &= (\SI{-0.44}{\volt}) - \frac{0.059}
+                        {\SI{2}{electrons}}\log[\SI{0.29}{M}] \\
+                        E_{\ch{Fe}} &= \SI{-0.424}{\volt} \\
+                    \end{align*}
+                    
+                    \begin{equation*}
+                        \ch{O2 + 4 H+ + 4 e- -> 2 H2O}
+                    \end{equation*}
+
+                    \begin{align*}
+                        E_{\ch{O2}} &= E^o - \frac{0.059}{n}\log
+                        \left(\frac{1}{P_{\ch{O2}}[\ch{H+}]^4}\right) \\
+                                    & \begin{aligned}
+                                        E^o &= \SI{1.23}{\volt} \\
+                                        n &= \SI{4}{electrons} \\
+                                        P_{\ch{O2}} &= 1 \\
+                                        [\ch{H+}] &= 10^{-\si{pH}} = 10^{-5.5} \\
+                                    \end{aligned} \\
+                        E_{\ch{O2}} &= \SI{1.23}{\volt} - \frac{0.059}
+                        {\SI{4}{electrons}}\log
+                        \left(\frac{1}{(1)[10^{-5.5}]^4}\right) \\
+                        E_{\ch{O2}} &= \SI{0.906}{\volt} \\
+                        \text{Anodic: } & \\
+                        E_{\text{corr}} &= E_{\ch{Fe}} + b_a\log\left(\frac{i_\text{corr}}{i^o_{\ch{Fe}}}\right)
+                    \end{align*}
+
+                }
+
+                \pagebreak
+
+                \boxedanswer{
+                    \begin{align*}
+                        \text{Cathodic: } & \\
+                        E_{\text{corr}} &= E_{\ch{O2}} + b_c\log\left(\frac{i_\text{corr}}{i^o_{\ch{O2}}}\right) \\
+                                        & b_a = -b_c \\
+                        E_{\ch{Fe}} + b_a\log\left(\frac{i_\text{corr}}{i^o_{\ch{Fe}}}\right)
+                         &= E_{\ch{O2}} + b_c\log\left(\frac{i_\text{corr}}{i^o_{\ch{O2}}}\right) \\
+                        E_{\ch{Fe}} - E_{\ch{O2}} 
+                         &= b_c\log\left(\frac{i_\text{corr}}{i^o_{\ch{O2}}}\right) +
+                         b_c\log\left(\frac{i_\text{corr}}{i^o_{\ch{Fe}}}\right) \\
+                         10^{\frac{E_{\ch{Fe}} - E_{\ch{O2}} }{b_c}}
+                         &= \frac{i_\text{corr}^2}{i^o_{\ch{O2}}i^o_{\ch{Fe}}} \\
+                        i_\text{corr} &= \sqrt{i^o_{\ch{O2}}i^o_{\ch{Fe}}10^{\frac{E_{\ch{Fe}} - E_{\ch{O2}} }{b_c}}} \\
+                                      & \begin{aligned}
+                                          i^o_{\ch{O2}} &= \SI{e-6}{\ampere\per\centi\meter} \\ 
+                                          i^o_{\ch{Fe}} &= \SI{e-5}{\ampere\per\centi\meter} \\ 
+                                          E_{\ch{Fe}} &= \SI{-0.42}{\volt} \\
+                                          E_{\ch{O2}} &= \SI{0.9055}{\volt} \\
+                                          b_c &= \SI{-0.1}{\volt\per decade} \\
+                                      \end{aligned} \\
+                        i_\text{corr} &= \sqrt{(\SI{e-6}{\ampere\per\centi\meter})(\SI{e-5}{\ampere\per\centi\meter})
+                        10^{\frac{(\SI{-0.42}{\volt}) - (\SI{0.9055}{\volt}) }{(\SI{-0.1}{\volt\per decade})}}} \\
+                            \Aboxed{i_\text{corr} &= \SI{14.07}{\ampere\per\centi\meter\squared}} \\
+                            E_\text{corr} &= E_{\ch{O2}} + b_c\log\left(\frac{i_\text{corr}}{i^o_{\ch{O2}}}\right) \\
+                                          & \begin{aligned} 
+                                              E_{\ch{O2}} &= \SI{0.9055}{\volt} \\
+                                              b_c &= \SI{-0.1}{\volt\per decade} \\
+                                              i_\text{corr} &= \SI{5.6e-4}{\ampere\per\centi\meter\squared} \\
+                                              i^o_{\ch{O2}} &= \SI{e-6}{\ampere\per\centi\meter\squared} \\
+                                          \end{aligned} \\
+                            E_\text{corr} &= (\SI{0.9055}{\volt}) + 
+                            (\SI{-0.1}{\volt\per decade})\log
+                            \left(\frac{\SI{5.6e-4}{\ampere\per\centi\meter\squared}}
+                            {\SI{e-6}{\ampere\per\centi\meter\squared}}\right) \\
+                            \Aboxed{E_\text{corr} &= \SI{0.327}{\volt}}
+                    \end{align*}
+
+                            The current here is unreasonably high. Provided 
+                            conditions likely result in diffusion limitations.
+                }
+
+            \pagebreak
+
             \item A sacrificial zinc-manganese alloy anode is coupled with
                 iron to protect the structure.
 
                 \begin{enumerate}[(a)]
-                    \item Calculate the corrosion current of the protected
-                        structure.
+                    \item Calculate the sacrificial anode galvanic current and 
+                        potential necessary to protect the structures.
+
+                        \boxedanswer{
+
+                            Assume reference conditions for the zinc-manganese 
+                            alloy anode.
+
+                                \begin{align*}
+                                    E_\text{prot} &= E_{\ch{Zn}} + b_a
+                                    \log\left(\frac{i_\text{prot}}{i^o_{\ch{Zn}}}\right)
+                                = E_{\ch{O2}} + b_c
+                                \log\left(\frac{i_\text{prot}}{i^o_{\ch{O2}}}\right) \\
+                                    i_\text{prot} &= \sqrt{i_{\ch{Zn}}i_{\ch{O2}}10^{\frac{E_{\ch{Zn}} - E_{\ch{O2}}}{b_c}}} \\
+                                    &\begin{aligned}
+                                        E_{\ch{O2}} &= \SI{0.9055}{\volt} \\
+                                        E_{\ch{Zn}} &= \SI{-1.46}{\volt} \\
+                                        b_c &= \SI{-0.1}{\volt\per decade} \\
+                                        i_\text{Zn} &= \SI{e-5}{\ampere\per\centi\meter\squared} \\
+                                        i^o_{\ch{O2}} &= \SI{e-6}{\ampere\per\centi\meter\squared} \\      
+                                    \end{aligned} \\
+                                i_{\text{prot}} &=
+                                \sqrt{(10^{-5})(10^{-6})
+                                10^{\frac{-1.46 - 0.9055}{-0.1}}} \\
+                                \Aboxed{i_{\text{prot}} &= \SI{2.126e6}{\ampere\per\centi\meter\squared}} \\
+                                E_\text{prot} &= E_{\ch{Zn}} + b_a
+                                \log\left(\frac{i}{i^o_{\ch{Zn}}}\right) \\
+                                E_\text{prot} &= (\SI{-1.46}{\volt}) + (\SI{0.1}{\volt\per decade})
+                                \log\left(\frac{(\SI{5.339e-9}{\ampere\per\centi\meter\squared})}
+                                    {(\SI{e-5}{\ampere\per\centi\meter\squared})}\right) \\
+                                \Aboxed{E_\text{prot} &= \SI{-0.327}{\volt}}
+                            \end{align*}
+
+                            The protection current here is exceedingly high. 
+                            This is likely a diffusion limited process in reality.
+                            Provided conditions may be in error.
+
+                        }
+
                     \item Calculate the corrosion current of the protected
                         structure
+
+                    \boxedanswer{
+                        \begin{align*}
+                            E_\text{prot} &= E_{\ch{Fe}} + b_a\log\left(\frac{i_\text{corr}}{i_{\ch{Fe}}}\right) \\
+                            i_\text{corr} &= i_{\ch{Fe}}10^{\frac{E_\text{prot} - E_{\ch{Fe}}}{b_a}} \\
+                                          & \begin{aligned}
+                                              i_{\ch{Fe}} &= \SI{1e-5}{\ampere\per\centi\meter\squared} \\
+                                              E_\text{prot} &= \SI{-0.327}{V} \\
+                                              E_\text{Fe} &= \SI{-0.424}{V} \\
+                                              b_a &= \SI{0.1}{\volt\per decade} \\
+                                          \end{aligned} \\
+                            \Aboxed{i_\text{corr} &= \SI{1.07e-6}{\ampere\per\centi\meter\squared}}
+                            i_\text{corr} &= \sqrt{i^o_{\ch{O2}}i^o_{\ch{Fe}}10^{\frac{E_{\ch{Fe}} - E_{\ch{O2}} }{b_c}}} \text{ (because $b_a = -b_c)$}\\
+                                      & \begin{aligned}
+                                          i^o_{\ch{O2}} &= \SI{e-6}{\ampere\per\centi\meter} \\ 
+                                          i^o_{\ch{Fe}} &= \SI{e-5}{\ampere\per\centi\meter} \\ 
+                                          E_{\ch{Fe}} &= \SI{-0.42}{\volt} \\
+                                          E_{\ch{O2}} &= \SI{0.9055}{\volt} \\
+                                          b_c &= \SI{-0.1}{\volt\per decade} \\
+                                      \end{aligned} \\
+                        \end{align*}
+                    }
+
                 \end{enumerate}
 
-            \item Is the applied sacrificial protection system atisfactory?
+            \item Is the applied sacrificial protection system satisfactory?
                 Does the system offer overprotection or underprotection?
+
+            \boxedanswer{
+                This is a relatively tiny current and the system offers protection. 
+                There is however a huge anodic current, so it could be argued that
+                there is overprotection, despite the adequate corrosion current.
+            }
 
         Given:
 
         \begin{align*}
             b_a &= \SI{0.1}{\volt\per decade}, &
             b_c &= \SI{-0.1}{\volt\per decade} \\
-            P_{\ch{O2}} &= \SI{1}{atm} & \ch{[Fe^{2+}]} &= \SI{0.29}{M} \\
+            p_{\ch{O2}} &= \SI{1}{atm} & \ch{[Fe^{2+}]} &= \SI{0.29}{M} \\
             e^o_{\ch{Fe}|\ch{Fe^{2+}}} &= \SI{-0.44}{\volt} \text{ vs. SHE} \\
             e^o_{\ch{ZnMn}} &= \SI{-1.46}{\volt} \text{ vs. SHE}
         \end{align*}
@@ -47,7 +208,9 @@
         $i^o_{\ch{ZnMn}} = \SI{e-5}{\ampere\per\centi\meter\squared}$ \par
 
         \end{enumerate}
-        
+       
+    \pagebreak
+
     \item Iron corrodes in a solution saturated with oxygen. The pH of the 
         solution plays a significant role in the corrosion of iron and the 
         applied current needed to protect the iron. To analyze the effect of 
@@ -56,10 +219,102 @@
         \begin{enumerate}[(i)]
             \item calculate the corrosion current and potential when the 
                 solution has a pH of 14, 10, and 7;
+
+                \boxedanswer{
+
+                    
+                    Assume iron oxidation at the anode and oxygen reduction at 
+                    the cathode.
+
+                    \begin{equation*}
+                        \ch{Fe -> Fe^{2+} + 2 e-}
+                    \end{equation*}
+    
+                    \begin{align*}
+                        E_{\ch{Fe}} &= E^o - \frac{0.059}{n}\log[\ch{Fe^{2+}}] \\
+                                    & \begin{aligned}
+                                            E^o &= \SI{-0.44}{\volt} \\
+                                            n &= \SI{2}{electrons} \\
+                                            [\ch{Fe^{2+}}] &= \SI{0.5}{M} \\
+                                        \end{aligned} \\
+                        E_{\ch{Fe}} &= (\SI{-0.44}{\volt}) - \frac{0.059}
+                        {\SI{2}{electrons}}\log[\SI{0.5}{M}] \\
+                        E_{\ch{Fe}} &= \SI{-0.431}{\volt} \\
+                    \end{align*}
+                    
+                    \begin{equation*}
+                        \ch{O2 + 4 H+ + 4 e- -> 2 H2O}
+                    \end{equation*}
+
+                    \begin{align*}
+                        E_{\ch{O2}} &= E^o - \frac{0.059}{n}\log
+                        \left(\frac{1}{P_{\ch{O2}}[\ch{H+}]^4}\right) \\
+                                    & \begin{aligned}
+                                        E^o &= \SI{1.23}{\volt} \\
+                                        n &= \SI{4}{electrons} \\
+                                        P_{\ch{O2}} &= 1 \\
+                                        [\ch{H+}] &= 10^{-\si{pH}} = 10^{-[14, 10, 7]} \\
+                                    \end{aligned} \\
+                        E_{\ch{O2}} &= \SI{1.23}{\volt} - \frac{0.059}
+                        {\SI{4}{electrons}}\log
+                        \left(\frac{1}{(1)[10^{-[14, 10, 7]}]^4}\right) \\
+                        E_{\ch{O2}} &= \SI{0.0138}{\volt},\SI{0.209}{\volt},\SI{1.61}{\volt} \\
+                        i_\text{corr} &= \sqrt{i^o_{\ch{O2}}i^o_{\ch{Fe}}10^{\frac{E_{\ch{Fe}} - E_{\ch{O2}} }{b_c}}} \\
+                                      & \begin{aligned}
+                                          i^o_{\ch{O2}} &= \SI{e-7}{\ampere\per\centi\meter} \\ 
+                                          i^o_{\ch{Fe}} &= \SI{e-5}{\ampere\per\centi\meter} \\ 
+                                          E_{\ch{Fe}} &= \SI{-0.42}{\volt} \\
+                                          E_{\ch{O2}} &= [\SI{0.015}{\volt}, \SI{0.227}{\volt},\SI{1.74}{\volt}] \\
+                                          b_c &= \SI{-0.1}{\volt\per decade} \\
+                                      \end{aligned} \\
+                        \Aboxed{i_\text{corr} &= [\SI{-1.015}{\ampere\per\centi\meter\squared},
+                                        \SI{0.227}{\ampere\per\centi\meter\squared}, 
+                                        \SI{1.74}{\ampere\per\centi\meter\squared}
+                                    ]} \\
+                        E_{\text{corr}} &= E_{\ch{O2}} + b_c\log\left(\frac{i_\text{corr}}{i^o_{\ch{O2}}}\right) \\
+                        \Aboxed{E_{\text{corr}} &= [\SI{-0.788}{\volt}, \SI{-0.832}{\volt}, \SI{-0.85}{\volt}]}
+                    \end{align*}
+
+                }
+
+            \pagebreak
+
             \item to bring down the corrosion current to the order of \num{e-5}
                 , calculate the impressed current needed; and 
+
+                \boxedanswer{
+                    \begin{align*}
+                        i_a &= i_{\ch{Fe}}\times 10^{\frac{E - E_{\ch{Fe}}}{b_a}} \\
+                        b_a\log\left(\frac{i_a}{i_{\ch{Fe}}}\right) &= E - E_{\ch{Fe}} \\
+                            & \begin{aligned}
+                                i_{\ch{Fe}} &= \SI{e-5}{\ampere\per\centi\meter\squared} \\
+                                i_a &= \SI{e-5}{\ampere\per\centi\meter\squared} \\
+                                b_a &= \SI{0.1}{\volt\per decade} \\
+                            \end{aligned} \\
+                        E - E_{\ch{Fe}} &= (\SI{0.1}{\volt\per decade})
+                            \log\left(\frac{(\SI{e-5}{\ampere\per\centi\meter\squared})}
+                            {(\SI{e-5}{\ampere\per\centi\meter\squared})}\right) \\
+                        E - E_{\ch{Fe}} &= 0 \\
+                        E &= E_{\ch{Fe}} = \SI{-0.431}{\volt} \\
+                        i_c &= i_{\ch{O2}}^o 10^{\frac{ E_{\text{prot}} - E_{\ch{O2}} }{b_c}} \\
+                            & \begin{aligned}
+                                i_{\ch{O2}}^o &= \SI{e-7}{\ampere\per\centi\meter\squared} \\
+                                E_\text{prot} &= \SI{-0.431}{\volt} \\
+                                b_c &= \SI{-0.1}{\ampere\per\centi\meter\squared} \\
+                            \end{aligned} \\
+                        \Aboxed{i_c &= [\SI{22.4}{\ampere\per\centi\meter\squared}, \SI{5140}{\ampere\per\centi\meter\squared}, \SI{303000}{\ampere\per\centi\meter\squared}]}
+                    \end{align*}
+                }
+
             \item Does the impressed current increase/decrease with pH? If so, 
                 why?
+
+            \boxedanswer{
+                The current decreases with pH. As the pH increases, the concentration of \ch{H+} decreases, which raises
+                the potential of $E_{\ch{O2}}$. This narrows the difference between $E_{\ch{O2}}$ and $E_{\ch{Fe^{2+}|Fe}}$, 
+                which reduces the cathodic driving force and therefore the impressed current.
+            }
+
         \end{enumerate}
 
         Given:
@@ -67,7 +322,7 @@
         \begin{align*}
             b_a &= \SI{0.1}{\volt\per decade}, & 
             b_c &= \SI{-0.1}{\volt\per decade} \\
-            p_{\ch{O2}} &= \SI{1}{atm}, \ch{[Fe^{2+}]} &= \SI{0.5}{M}
+            p_{\ch{O2}} &= \SI{1}{atm}, & \ch{[Fe^{2+}]} &= \SI{0.5}{M}
         \end{align*}
 
         Exchange current density for oxygen reduction, 
